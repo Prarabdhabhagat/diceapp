@@ -1,24 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import StartGame from "./Component/StartGame";
+import PlayGame from "./Component/PlayGame";
 
 function App() {
+  const [isHoverd, setIsHoverd] = useState(true);
+
+  const goNext = () => {
+    setIsHoverd(true);
+  };
+
+  const goBack = () => {
+    setIsHoverd(false);
+  };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      {isHoverd ? <PlayGame toggle={goNext} /> : <StartGame toggle={goBack} />}
+    </>
   );
 }
 
